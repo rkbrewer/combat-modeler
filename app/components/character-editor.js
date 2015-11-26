@@ -16,15 +16,15 @@ if (Meteor.isClient) {
   Template.characterEditor.events({
     'click .js-character-selector__character':function(){
       var characterId = this._id;
-      console.log(characterId);
       Session.set('character', characterId);
     },
     'click .js-insert-new-character': function () {
       Meteor.call('insertNewCharacter', function(result){
         Session.set('character', result);
       });
+      //TODO select nav item for newly created character. The 'active' class should be set by the Session character model
     },
-    'submit .character-data':         function (event) {
+    'submit .js-update-character-data':         function (event) {
       Meteor.call('updateCharacterData', {
         name:    event.target.name.value,
         hp:      event.target.hp.value,
@@ -53,7 +53,15 @@ if (Meteor.isServer) {
       });
     },
     updateCharacterData: function (data) {
-
+      CharacterList.update({
+        name: document.characterEditor.name.value,
+        hp: document.characterEditor.hp.value,
+        mp: document.characterEditor.mp.value,
+        strength: document.characterEditor.strength.value,
+        defense: document.characterEditor.defense.value,
+        agility: document.characterEditor.agility.value,
+        luck: document.characterEditor.luck.value
+      });
     }
   })
 }
