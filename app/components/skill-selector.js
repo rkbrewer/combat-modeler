@@ -10,8 +10,8 @@ if (Meteor.isClient){
     availableSkill: function () {
       return SkillList.find().fetch();
     },
-    selectedSkill: function(){
-      return SkillList.find().fetch();//send back only those belonging to selected character
+    currentSkill: function(){
+      return SkillList.find().fetch();//send back only those belonging to current character
     }
   });
 }

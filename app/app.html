@@ -1,8 +1,14 @@
 <head>
-  <title>app</title>
+  <title>Combat Modeler</title>
 </head>
 
-<body>
-{{> skillSelector}}
-{{> skillAiEditor}}
+<body class="container-fluid">
+<div class="row">
+  {{> characterEditor }}
+  {{> skillSelector }}
+  {{> skillAiEditor }}
+  <div class="col-md-12">
+    <button class="btn btn-default">Save</button>
+  </div>
+</div>
 </body>
