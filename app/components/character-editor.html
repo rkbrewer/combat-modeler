@@ -8,42 +8,45 @@
     {{/each}}
     <li><a href="#" class="js-insert-new-character">+</a></li>
   </ul>
-  <form name="characterEditor" class="character-editor col-md-3">
+  <form class="character-editor col-md-3">
     <div class="row">
       <div class="form-group col-md-12">
         <label>Character Name</label>
-        <input class="form-control" type="text" name="characterName" value="{{selectedCharacter.name}}"/>
+        <input class="form-control" type="text" name="cName" value="{{selectedCharacter.name}}"/>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-6">
         <label>HP</label>
-        <input type="number" value="{{selectedCharacter.hp}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.hp}}" name="cHp" class="form-control"/>
       </div>
       <div class="form-group col-md-6">
         <label>MP</label>
-        <input type="number" value="{{selectedCharacter.mp}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.mp}}" name="cMp" class="form-control"/>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-6">
         <label>Strength</label>
-        <input type="number" value="{{selectedCharacter.strength}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.strength}}" name="cStrength" class="form-control"/>
       </div>
       <div class="form-group col-md-6">
         <label>Defense</label>
-        <input type="number" value="{{selectedCharacter.defense}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.defense}}" name="cDefense" class="form-control"/>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-6">
         <label>Agility</label>
-        <input type="number" value="{{selectedCharacter.agility}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.agility}}" name="cAgility" class="form-control"/>
       </div>
       <div class="form-group col-md-6">
         <label>Luck</label>
-        <input type="number" value="{{selectedCharacter.luck}}" class="form-control"/>
+        <input type="number" value="{{selectedCharacter.luck}}" name="cLuck" class="form-control"/>
       </div>
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-default js-update-character-data">Save</button>
     </div>
   </form>
 </template>

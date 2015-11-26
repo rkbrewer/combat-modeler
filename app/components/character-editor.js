@@ -9,7 +9,6 @@ if (Meteor.isClient) {
     },
     selectedCharacter: function () {
       var selectedCharacter = Session.get('character');
-      console.log('selected character: ', selectedCharacter);
       return CharacterList.findOne(selectedCharacter);
     }
   });
@@ -24,15 +23,18 @@ if (Meteor.isClient) {
       });
       //TODO select nav item for newly created character. The 'active' class should be set by the Session character model
     },
-    'submit .js-update-character-data':        function (event) {
-      Meteor.call('updateCharacterData', {
-        name:    event.target.name.value,
-        hp:      event.target.hp.value,
-        mp:      event.target.mp.value,
-        agility: event.target.agility.value,
-        defense: event.target.defense.value,
-        luck:    event.target.luck.value
-      });
+    'submit .character-editor':                function (event) {
+      event.preventDefault();
+      var selectedCharacter = Session.get('character');
+      var data = {
+        name:    event.target.cName.value,
+        hp:      event.target.cHp.value,
+        mp:      event.target.cMp.value,
+        agility: event.target.cAgility.value,
+        defense: event.target.cDefense.value,
+        luck:    event.target.cLuck.value
+      };
+      Meteor.call('updateCharacterData', selectedCharacter, data);
     }
   })
 }
@@ -52,15 +54,11 @@ if (Meteor.isServer) {
         createdBy: currentUser
       });
     },
-    updateCharacterData: function (data) {
-      CharacterList.update({
-        name:     document.characterEditor.name.value,
-        hp:       document.characterEditor.hp.value,
-        mp:       document.characterEditor.mp.value,
-        strength: document.characterEditor.strength.value,
-        defense:  document.characterEditor.defense.value,
-        agility:  document.characterEditor.agility.value,
-        luck:     document.characterEditor.luck.value
+    updateCharacterData: function (characterId, data) {
+      //TODO update the selectedCharacter, use the id, and the $set methods
+      //TODO include createdBy key in the document selector for security reasons
+      CharacterList.update({_id: characterId}, {
+        $set: data
       });
     }
   })
