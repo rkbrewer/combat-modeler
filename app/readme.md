@@ -45,4 +45,9 @@ the goal has either been satisfied or failed, or another strategy is necessitate
 # Personalities in Hierarchical Goal-based Arbitration Design
 
 There are many simple spin-off concepts HGBAD can conquer such as Personalities, State Memory, Command Queueing,
-Using the Queue for Scripted Behavior (eg, minion go there, open chest, grab gold, bring it back)
+Using the Queue for Scripted Behavior (eg, minion go there, open chest, grab gold, bring it back).
+
+# Uses
+
+The combat modeler should be able to report percent chances a character has against a mob given a certain level/stat
+configuration.
